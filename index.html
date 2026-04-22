@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Система бронирования ноутбуков Новой Гуманитарной Школы</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #eaf6e9 0%, #d9f0d7 100%);
+            color: #1f2b1f;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 22px;
+            background: #ffffff;
+            border-bottom: 4px solid #7bc043;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2f7d32;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .admin-link a {
+            display: inline-block;
+            padding: 14px 22px;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 18px;
+            border: 2px solid #3f7dc7;
+            background: linear-gradient(180deg, #69a8ef 0%, #4e87d0 100%);
+            font-size: 22px;
+            font-weight: bold;
+            box-shadow: 0 3px 0 #2e5d95;
+        }
+
+        .admin-link a:hover {
+            background: linear-gradient(180deg, #7bb5f5 0%, #5c94db 100%);
+        }
+
+        .page {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .panel {
+            width: 100%;
+            max-width: 700px;
+            border: 4px solid #7bc043;
+            border-radius: 22px;
+            background: #ffffff;
+            padding: 42px 34px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .panel h1 {
+            margin: 0 0 16px 0;
+            font-size: 42px;
+            text-align: center;
+            color: #2f7d32;
+        }
+
+        .panel p {
+            margin: 0 0 34px 0;
+            text-align: center;
+            color: #4b5b4b;
+            font-size: 22px;
+            line-height: 1.5;
+        }
+
+        .actions {
+            display: grid;
+            gap: 22px;
+        }
+
+        .action-link {
+            display: block;
+            width: 100%;
+            padding: 22px 24px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 32px;
+            font-weight: bold;
+            border-radius: 22px;
+            border: 2px solid transparent;
+            transition: transform 0.1s ease, filter 0.15s ease;
+        }
+
+        .action-link:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.04);
+        }
+
+        .action-link.primary {
+            background: linear-gradient(180deg, #7fd64d 0%, #58aa2d 100%);
+            border-color: #4b9227;
+            box-shadow: 0 4px 0 #3f7a21;
+        }
+
+        .action-link.secondary {
+            background: linear-gradient(180deg, #6eb6f3 0%, #4a89d0 100%);
+            border-color: #3c6fb0;
+            box-shadow: 0 4px 0 #2d5789;
+        }
+
+        .footer {
+            padding: 18px 20px;
+            text-align: center;
+            color: #4d6a4d;
+            border-top: 2px solid #b7dcb4;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.75);
+        }
+
+        @media (max-width: 640px) {
+            .panel {
+                padding: 28px 20px;
+            }
+
+            .panel h1 {
+                font-size: 32px;
+            }
+
+            .panel p {
+                font-size: 18px;
+            }
+
+            .action-link {
+                font-size: 24px;
+                padding: 18px 14px;
+            }
+
+            .topbar {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .brand {
+                font-size: 20px;
+            }
+
+            .admin-link a {
+                font-size: 18px;
+                padding: 12px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="brand">СИСТЕМА БРОНИРОВАНИЯ НОУТБУКОВ НОВОЙ ГУМАНИТАРНОЙ ШКОЛЫ</div>
+        <div class="admin-link">
+            <a href="{{ url_for('admin') }}">Админ</a>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="panel">
+            <h1>Главное меню</h1>
+            <p>Выберите нужное действие.</p>
+
+            <div class="actions">
+                <a href="{{ url_for('reserve') }}" class="action-link primary">Забронировать ноутбук</a>
+                <a href="{{ url_for('return_laptop') }}" class="action-link secondary">Вернуть ноутбук</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">Система бронирования ноутбуков Новой Гуманитарной Школы</div>
+</body>
+</html>

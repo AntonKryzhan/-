@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Начало учебной сессии</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #eaf6e9 0%, #d9f0d7 100%);
+            color: #1f2b1f;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 22px;
+            background: #ffffff;
+            border-bottom: 4px solid #7bc043;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2f7d32;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .top-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .top-links a {
+            display: inline-block;
+            padding: 14px 22px;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 18px;
+            font-size: 22px;
+            font-weight: bold;
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18);
+        }
+
+        .top-links a:first-child {
+            background: linear-gradient(180deg, #7fd64d 0%, #58aa2d 100%);
+            border: 2px solid #4b9227;
+        }
+
+        .top-links a:last-child {
+            background: linear-gradient(180deg, #6eb6f3 0%, #4a89d0 100%);
+            border: 2px solid #3c6fb0;
+        }
+
+        .page {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .panel {
+            width: 100%;
+            max-width: 700px;
+            border: 4px solid #7bc043;
+            border-radius: 22px;
+            background: #ffffff;
+            padding: 38px 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        h1 {
+            margin: 0 0 26px 0;
+            text-align: center;
+            font-size: 42px;
+            color: #2f7d32;
+        }
+
+        .error {
+            margin-bottom: 20px;
+            padding: 14px 16px;
+            background: #fff1f1;
+            border: 2px solid #e69a9a;
+            border-radius: 12px;
+            color: #b03333;
+            font-size: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #3d553d;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 16px 14px;
+            background: #f9fff9;
+            color: #1f2b1f;
+            border: 2px solid #9fce82;
+            border-radius: 16px;
+            font-size: 24px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #5ba92e;
+            box-shadow: 0 0 0 3px rgba(91, 169, 46, 0.15);
+        }
+
+        .buttons {
+            display: grid;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        button,
+        .back-link {
+            width: 100%;
+            padding: 18px 18px;
+            border-radius: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            color: #ffffff;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.18);
+        }
+
+        button {
+            border: 2px solid #4b9227;
+            background: linear-gradient(180deg, #7fd64d 0%, #58aa2d 100%);
+        }
+
+        button:hover {
+            filter: brightness(1.04);
+        }
+
+        .back-link {
+            display: inline-block;
+            border: 2px solid #3c6fb0;
+            background: linear-gradient(180deg, #6eb6f3 0%, #4a89d0 100%);
+        }
+
+        .back-link:hover {
+            filter: brightness(1.04);
+        }
+
+        .footer {
+            padding: 18px 20px;
+            text-align: center;
+            color: #4d6a4d;
+            border-top: 2px solid #b7dcb4;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.75);
+        }
+
+        @media (max-width: 640px) {
+            .topbar {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .top-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .panel {
+                padding: 28px 20px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            label {
+                font-size: 18px;
+            }
+
+            input[type="text"] {
+                font-size: 20px;
+            }
+
+            button,
+            .back-link,
+            .top-links a {
+                font-size: 20px;
+                padding: 14px 14px;
+            }
+
+            .brand {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="brand">СИСТЕМА БРОНИРОВАНИЯ НОУТБУКОВ</div>
+        <div class="top-links">
+            <a href="{{ url_for('index') }}">Главная</a>
+            <a href="{{ url_for('admin') }}">Админка</a>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="panel">
+            <h1>Начало учебной сессии</h1>
+
+            {% if error %}
+            <div class="error">{{ error }}</div>
+            {% endif %}
+
+            <form method="post" autocomplete="off" spellcheck="false">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                <div class="form-group">
+                    <label for="first_name">Имя</label>
+                    <input type="text" id="first_name" name="first_name" maxlength="50" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Фамилия</label>
+                    <input type="text" id="last_name" name="last_name" maxlength="50" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="class">Класс</label>
+                    <input type="text" id="class" name="class" maxlength="50" required placeholder="Например: 7Б">
+                </div>
+
+                <div class="buttons">
+                    <button type="submit">Начать сессию</button>
+                    <a href="{{ url_for('index') }}" class="back-link">На главную</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">Система бронирования ноутбуков</div>
+</body>
+</html>
